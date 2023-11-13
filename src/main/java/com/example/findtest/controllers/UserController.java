@@ -22,4 +22,15 @@ public class UserController {
         modelAndView.setViewName("/user/login");
         return modelAndView;
     }
+
+    @GetMapping(value = "/join")
+    public ModelAndView getJoin(ModelAndView modelAndView){
+        modelAndView.setViewName("/user/join");
+        return modelAndView;
+    }
+    @GetMapping(value = "/postmain")
+    public ModelAndView getPostmain(ModelAndView modelAndView){
+        modelAndView.setViewName("/main/postmain");
+        return modelAndView;
+    }
 }

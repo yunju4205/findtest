@@ -34,13 +34,13 @@ input{
 }
 .mainimg{
     font-size: 2rem;
-    color: #858585;
+    color: darksalmon;
 }
 
 .maintext{
     font-size: 1.3rem;
     padding-left: 1rem;
-    color: #858585;
+    color: darksalmon;
     font-weight: bold;
 }
 
