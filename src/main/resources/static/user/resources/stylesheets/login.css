@@ -24,7 +24,7 @@ input{
 }
 
 .mainmain{
-    width: 30rem;
+    width: 20rem;
     height: 3rem;
     align-items: center;
     justify-content: center;
@@ -34,12 +34,14 @@ input{
 }
 .mainimg{
     font-size: 2rem;
-
+    color: #858585;
 }
 
 .maintext{
     font-size: 1.3rem;
     padding-left: 1rem;
+    color: #858585;
+    font-weight: bold;
 }
 
 .logmainmain{
