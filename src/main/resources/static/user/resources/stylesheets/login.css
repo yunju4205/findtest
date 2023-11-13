@@ -4,12 +4,131 @@ body{
     margin: 0;
 }
 
+input{
+    border: none;
+    background-color: unset;
+    outline: none;
+}
+
 .main{
     width: 30rem;
-    height: 50rem;
+    height: 35rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: relative;
-    background-color: red;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainmain{
+    width: 30rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+.mainimg{
+    font-size: 2rem;
+
+}
+
+.maintext{
+    font-size: 1.3rem;
+    padding-left: 1rem;
+}
+
+.logmainmain{
+    width: 28rem;
+    height: 15rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border: 0.0625rem solid #d2d2d2;
+    border-radius: 0.5rem;
+}
+
+.logmain{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.logbtu{
+    width: 25rem;
+    height: 3rem;
+    margin-top: 1rem;
+    border: 0.0625rem solid #b96262;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: darksalmon;
+}
+
+.login{
+    width: 25rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    border-top: 0.0625rem solid #d2d2d2;
+    border-left: 0.0625rem solid #d2d2d2;
+    border-right: 0.0625rem solid #d2d2d2;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.idimg{
+    padding-left: 1rem;
+    color: #d2d2d2;
+}
+.passimg{
+    padding-left: 1rem;
+    color: #d2d2d2;
+}
+.passwordmain{
+    width: 25rem;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    border: 0.0625rem solid #d2d2d2;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.joinmain{
+    width: 30rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #8d8d8d;
+}
+
+.idfind{
+    height: 1.5rem;
+    border-right: 0.0625rem solid #d2d2d2;
+    border-left: 0.0625rem  solid #d2d2d2;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-right: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+input{
+    width: 15rem;
+    height: 2rem;
+    padding-left: 1rem;
+    color: #ffffff;;
 }
