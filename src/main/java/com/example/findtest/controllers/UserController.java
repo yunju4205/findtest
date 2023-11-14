@@ -33,4 +33,10 @@ public class UserController {
         modelAndView.setViewName("/main/postmain");
         return modelAndView;
     }
+
+    @GetMapping(value = "/textadd")
+    public ModelAndView getTextadd(ModelAndView modelAndView){
+        modelAndView.setViewName("/user/textadd");
+        return modelAndView;
+    }
 }
