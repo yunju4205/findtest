@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.findtest.entities.UserEntity">
-
+<mapper namespace="com.example.findtest.mappers.IUserMapper">
+    <insert id="insertUser"
+            parameterType="com.example.findtest.entities.UserEntity">
+        INSERT INTO `table`.`join`(`email`, `password`, `birth`, `phone_number`, `name`)
+        VALUES (#{email}, #{password}, #{birth}, #{phoneNumber},#{name})
+    </insert>
 </mapper>

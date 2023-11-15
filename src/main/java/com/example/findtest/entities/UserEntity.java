@@ -1,13 +1,24 @@
 package com.example.findtest.entities;
 
+import java.util.Date;
+
 public class UserEntity {
 
     private int index;
     private String email;
     private String password;
+    private Date birth;
     private String phoneNumber;
     private  String name;
 
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
 
     public int getIndex() {
         return index;
