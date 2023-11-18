@@ -13,8 +13,8 @@
             <i class="fa-regular fa-pen-to-square"></i>
         </div>
         <div class="maintext">게시판</div>
-        <a class="login">로그인</a>
-        <a class="join">회원가입</a>
+        <a th:href="@{/user/login}" class="login">로그인</a>
+        <a th:href="@{/user/join}"class="join">회원가입</a>
     </div>
     <form>
         <select class="full" id="long">
@@ -25,7 +25,7 @@
         </select>
         <input class="find" type="text" name="find" placeholder="검색해주세요">
         <input class="findbtu" type="submit" value="검색">
-        <input class="textbtu" type="submit" value="글쓰기">
+        <a th:href="@{/user/textadd}" class="textbtu">글쓰기</a>
     </form>
     <table>
         <thead>

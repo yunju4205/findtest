@@ -10,6 +10,10 @@ input{
     background-color: unset;
 }
 
+a {
+    text-decoration-line: none;
+}
+
 
 .main{
     width: 50rem;
