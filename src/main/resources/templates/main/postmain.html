@@ -13,7 +13,9 @@
             <i class="fa-regular fa-pen-to-square"></i>
         </div>
         <div class="maintext">게시판</div>
-        <a th:href="@{/user/login}" class="login">로그인</a>
+        <a th:if="${session.loginVo1 == null}"
+           th:href="@{/user/login}" class="login">로그인</a>
+
         <a th:href="@{/user/join}"class="join">회원가입</a>
     </div>
     <form>
@@ -25,7 +27,7 @@
         </select>
         <input class="find" type="text" name="find" placeholder="검색해주세요">
         <input class="findbtu" type="submit" value="검색">
-        <a th:href="@{/user/textadd}" class="textbtu">글쓰기</a>
+        <a th:href="@{/main/textadd}" class="textbtu">글쓰기</a>
     </form>
     <table>
         <thead>
@@ -38,26 +40,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="tbody">
-            <td>1</td>
-            <td>오늘은 어디까지?</td>
-            <td>안윤주</td>
-            <td>2023-11-13</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>오늘은 어디까지?</td>
-            <td>안윤주</td>
-            <td>2023-11-13</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>오늘은 어디까지?</td>
-            <td>안윤주</td>
-            <td>2023-11-13</td>
-            <td>3</td>
+        <tr th:each = "mainEntity : ${mainEntities}" class="tbody">
+            <td th:text = "${mainEntity.getIndex()}"></td>
+            <td th:text = "${mainEntity.getTitle()}"></td>
+            <td th:text = "${mainEntity.getTextname()}"></td>
+            <td th:text = "${mainEntity.getTextdate()}"></td>
+            <td th:text = "${mainEntity.getTextdate()}"></td>
         </tr>
         </tbody>
     </table>

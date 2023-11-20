@@ -38,7 +38,7 @@ public class UserController {
         LoginVo loginVo1 = this.userService.loginUser(loginVo);
         if(loginVo1.getResult().equals("성공")) {
             session = request.getSession();
-            session.setAttribute("loginVo1", loginVo);
+            session.setAttribute("loginVo1", loginVo1);
             modelAndView.setViewName("redirect:/main/postmain");
         } else {
             modelAndView.setViewName("/user/login");
