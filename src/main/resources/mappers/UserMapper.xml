@@ -7,4 +7,18 @@
         INSERT INTO `table`.`join`(`email`, `password`, `birth`, `phone_number`, `name`)
         VALUES (#{email}, #{password}, #{birth}, #{phoneNumber},#{name})
     </insert>
+
+    <select id="selectUser"
+            parameterType="com.example.findtest.entities.UserEntity"
+            resultType="com.example.findtest.entities.UserEntity">
+        SELECT `index` AS `index`,
+               `email` AS `email`,
+               `password` AS `password`,
+               `birth` AS `birth`,
+               `name` AS `name`,
+               `phone_number` AS `phoneNumber`
+        FROM `table`.`join`
+        WHERE `email` = #{email}
+          AND `password` = #{password}
+    </select>
 </mapper>

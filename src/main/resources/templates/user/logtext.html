@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-  <link rel="stylesheet" href="/user/resources/stylesheets/textadd.css">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/user/resources/stylesheets/logtext.css">
 </head>
 <body>
 <div class="main">
@@ -27,8 +27,10 @@
     </div>
     <div class="btumain">
       <input class="save" type="submit" value="저장">
-      <input class="again" type="reset" value="다시입력">
+      <input class="again" type="submit" value="다시입력">
       <a th:href="@{/user/postmain}" class="listGo">목록으로</a>
+      <a th:href="@{/user/postmain}" class="modify">수정</a>
+      <a th:href="@{/user/postmain}" class="delete">삭제</a>
     </div>
   </form>
 </div>

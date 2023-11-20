@@ -10,6 +10,21 @@ public class UserEntity {
     private String birth;
     private String phoneNumber;
 
+
+    public UserEntity (){
+
+    }
+
+    public UserEntity(int index, String email, String password, String birth, String phoneNumber, String name, String date) {
+        this.index = index;
+        this.email = email;
+        this.password = password;
+        this.birth = birth;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.date = date;
+    }
+
     public String getBirth() {
         return birth;
     }

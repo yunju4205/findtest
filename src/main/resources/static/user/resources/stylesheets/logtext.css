@@ -1,0 +1,185 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+input{
+    border: none;
+    outline: none;
+    background-color: unset;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+
+.main{
+    width: 50rem;
+    height: 30rem;
+    transform: translate(-50%, -50%);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.mainmainmain{
+    width: 40rem;
+    height: 3.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: darksalmon;
+}
+
+.textmain{
+    width: 40rem;
+    height: 20rem;
+    align-items: start;
+    justify-content: start;
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    border-bottom: 0.0625rem solid #ffffff;
+    text-align: center;
+    background-color: darksalmon;
+    color: white;
+    font-weight: bold;
+}
+
+.titletext{
+    height: 2rem;
+    width: 30rem;
+    padding-left: 1rem;
+}
+.title > div{
+    margin-top: 0.5rem;
+}
+.mainmain > div{
+    width: 30rem;
+    height: 3.5rem;
+    border-bottom: 0.0625rem solid #ff8989;
+    align-items: center;
+    display: flex;
+}
+.titlemain{
+    width: 30rem;
+    height: 20rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 0.0625rem solid #ff8989;
+}
+
+.mainmain{
+    width: 30rem;
+    height: 20rem;
+    border-top: 0.0625rem solid #ff8989;
+    border-bottom: 0.0625rem solid #ff8989;
+    border-right: 0.0625rem solid #ff8989;
+    display: flex;
+    flex-direction: column;
+}
+
+.texttitle{
+    width: 10rem;
+    height: 17rem;
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: darksalmon;
+    color: white;
+    font-weight: bold;
+}
+
+.texttitle > div {
+    margin-top: 0.5rem;
+}
+.texttext{
+    width: 28.9rem;
+    height: 20rem;
+    padding-left: 1rem;
+}
+.btumain{
+    width: 40rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.save{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    background-color: darksalmon;
+    color: white;
+}
+.save:hover{
+    border: 0.0625rem solid black;
+}
+
+.again{
+    width: 4.3rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    border-radius: 0.2rem;
+    background-color: darksalmon;
+    color: white;
+}
+.again:hover{
+    border: 0.0625rem solid black;
+}
+
+.listGo{
+    width: 4.3rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    border-radius: 0.2rem;
+    background-color: darksalmon;
+    color: white;
+}
+.listGo:hover{
+    border: 0.0625rem solid black;
+}
+
+.modify{
+    width: 4.3rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    border-radius: 0.2rem;
+    background-color: darksalmon;
+    color: white;
+}
+.modify:hover{
+    border:0.0625rem solid black;
+}
+
+.delete{
+    width: 4.3rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    border-radius: 0.2rem;
+    background-color: darksalmon;
+    color: white;
+}
+
+.delete:hover{
+    border: 0.0625rem solid black;
+}
