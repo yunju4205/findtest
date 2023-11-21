@@ -9,6 +9,31 @@ public class MainEntity {
     private Data textdate;
     private int hits;
 
+    private int userId;
+
+
+
+    public MainEntity(){
+
+    }
+
+    public MainEntity(int index, String title, String textname, Data textdate, int hits, int userId) {
+        this.index = index;
+        this.title = title;
+        this.textname = textname;
+        this.textdate = textdate;
+        this.hits = hits;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getIndex() {
         return index;
     }

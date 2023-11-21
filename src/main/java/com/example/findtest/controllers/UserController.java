@@ -59,5 +59,17 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/logout")
+    public ModelAndView getLogout(ModelAndView modelAndView,
+                                  HttpServletRequest request,
+                                  HttpSession session){
+        session = request.getSession(false);
+        if(session != null){
+            session.invalidate();
+        }
+        modelAndView.setViewName("redirect:/main/postmain");
+        return modelAndView;
+    }
+
 
 }

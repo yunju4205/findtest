@@ -3,4 +3,20 @@
 
 <mapper namespace="com.example.findtest.mappers.IMainMapper">
 
+    <select id="selectMain"
+            resultType="com.example.findtest.entities.MainEntity">
+        SELECT `index`    AS `index`,
+               `title`    AS `title`,
+               `textname` AS `textname`,
+               `hits`     AS `hits`
+        FROM `table`.`post`
+        WHERE `user_id` = #{index}
+    </select>
+
+    <insert id="insertMain"
+            parameterType="com.example.findtest.entities.MainEntity">
+        INSERT INTO `table`.`post`(`title`, `textname`, `hits` , `user_id`)
+        VALUES (#{title}, #{textname}, #{hits} , #{userId})
+    </insert>
+
 </mapper>

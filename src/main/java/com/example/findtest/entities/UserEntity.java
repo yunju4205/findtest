@@ -9,6 +9,9 @@ public class UserEntity {
     private String password;
     private String birth;
     private String phoneNumber;
+    private  String name;
+
+    private String date;
 
 
     public UserEntity (){
@@ -32,9 +35,6 @@ public class UserEntity {
     public void setBirth(String birth) {
         this.birth = birth;
     }
-
-    private  String name;
-
 
     public int getIndex() {
         return index;
@@ -84,5 +84,5 @@ public class UserEntity {
         this.date = date;
     }
 
-    private String date;
+
 }

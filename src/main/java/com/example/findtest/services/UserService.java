@@ -31,6 +31,7 @@ public class UserService {
         loginVo.setPassword(userEntity.getPassword());
         loginVo.setBirth(userEntity.getBirth());
         loginVo.setPhoneNumber(userEntity.getPhoneNumber());
+        loginVo.setName(userEntity.getName());
         loginVo.setResult("성공");
         return loginVo;
     }

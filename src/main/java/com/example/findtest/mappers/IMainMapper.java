@@ -6,5 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface IMainMapper {
-    MainEntity[] selectUser(@Param(value = "index")int index);
+    MainEntity[] selectMain(@Param(value = "index")int index);
+
+    int insertMain(MainEntity mainEntity);
 }

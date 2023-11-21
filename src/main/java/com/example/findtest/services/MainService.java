@@ -16,6 +16,10 @@ public class MainService {
     }
 
     public MainEntity[] showTable(int index){
-        return iMainMapper.selectUser(index);
+        return iMainMapper.selectMain(index);
+    }
+
+    public void insertMain(MainEntity mainEntity){
+        this.iMainMapper.insertMain(mainEntity);
     }
 }
