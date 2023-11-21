@@ -1,7 +1,9 @@
 package com.example.findtest.services;
 
+import com.example.findtest.dtos.MainDto;
 import com.example.findtest.entities.MainEntity;
 import com.example.findtest.mappers.IMainMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,17 @@ public class MainService {
         this.iMainMapper = iMainMapper;
     }
 
-    public MainEntity[] showTable(int index){
-        return iMainMapper.selectMain(index);
+    public MainDto[] showTable(){
+        return iMainMapper.selectMain();
     }
 
     public void insertMain(MainEntity mainEntity){
         this.iMainMapper.insertMain(mainEntity);
+    }
+
+    public MainEntity selectclick(int index) {
+        MainEntity mainEntity = this.iMainMapper.selectclick(index);
+        this.iMainMapper.updatehits(mainEntity.getHits()+1, index);
+        return mainEntity;
     }
 }

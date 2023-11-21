@@ -13,12 +13,15 @@
             <i class="fa-regular fa-pen-to-square"></i>
         </div>
         <div class="maintext">게시판</div>
-        <a th:if="${session.loginVo1 == null}"
-           th:href="@{/user/login}" class="login">로그인</a>
-        <a th:if="${session.loginVo1 == null}"
-                th:href="@{/user/join}"class="join">회원가입</a>
-        <div th:if = "${session.loginVo1 != null}" th:text="${session.loginVo1.getName()+'님'}" class="login"></div>
-        <a th:if="${session.loginVo1 != null}" th:href="@{/user/logout}" class="join">로그아웃</a>
+        <div class="mypagemain">
+            <a th:if="${session.loginVo1 == null}"
+               th:href="@{/user/login}" class="login">로그인</a>
+            <a th:if="${session.loginVo1 == null}"
+               th:href="@{/user/join}" class="join">회원가입</a>
+            <div th:if="${session.loginVo1 != null}" th:text="${session.loginVo1.getName()+'님'}" class="login"></div>
+            <a th:if="${session.loginVo1 != null}" th:href="@{/main/mypage}" class="mypage">마이페이지</a>
+            <a th:if="${session.loginVo1 != null}" th:href="@{/user/logout}" class="join">로그아웃</a>
+        </div>
     </div>
     <form>
         <select class="full" id="long">
@@ -42,12 +45,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each = "mainEntity : ${mainEntities}" class="tbody">
-            <td th:text = "${mainEntity.getIndex()}"></td>
-            <td th:text = "${mainEntity.getTitle()}"></td>
-            <td th:text = "${mainEntity.getTextname()}"></td>
-            <td th:text = "${mainEntity.getTextdate()}"></td>
-            <td th:text = "${mainEntity.getTextdate()}"></td>
+        <tr th:onclick="'location.href=\''+ @{/main/textclick(index=${mainDto.getIndex()})} + '\''"
+            th:each="mainDto : ${mainDtos}" class="tbody">
+            <td th:text="${mainDto.getIndex()}"></td>
+            <td th:text="${mainDto.getTitle()}"></td>
+            <td th:text="${mainDto.getName()}"></td>
+            <td th:text="${#dates.format(mainDto.getTextDate(),'YYYY-MM-dd')}"></td>
+            <td th:text="${mainDto.getHits()}"></td>
         </tr>
         </tbody>
     </table>

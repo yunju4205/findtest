@@ -1,11 +1,13 @@
 package com.example.findtest.controllers;
 
 
+import com.example.findtest.dtos.MainDto;
 import com.example.findtest.entities.MainEntity;
 import com.example.findtest.services.MainService;
 import com.example.findtest.vos.LoginVo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.juli.logging.Log;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,20 +27,10 @@ public class MainController {
         this.mainService = mainService;
     }
 
-    @GetMapping(value = "index")
-    public ModelAndView getIndex(ModelAndView modelAndView,
-                                 HttpServletRequest request,
-                                 HttpSession session){
-        session = request.getSession();
-        LoginVo loginVo = (LoginVo) session.getAttribute("loginVo1");
-        MainEntity[] mainEntities = this.mainService.showTable(loginVo.getIndex());
-        modelAndView.addObject("mainEntities", mainEntities);
-        modelAndView.setViewName("/main/postmain");
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/postmain")
+    @GetMapping(value = "postmain")
     public ModelAndView getPostmain(ModelAndView modelAndView){
+        MainDto[] mainDtos = this.mainService.showTable();
+        modelAndView.addObject("mainDtos", mainDtos);
         modelAndView.setViewName("/main/postmain");
         return modelAndView;
     }
@@ -50,7 +42,12 @@ public class MainController {
     }
     @PostMapping(value = "textadd")
     public ModelAndView postTextadd(ModelAndView modelAndView,
-                                    MainEntity mainEntity){
+                                    MainEntity mainEntity,
+                                    HttpServletRequest request,
+                                    HttpSession session){
+        session = request.getSession();
+        LoginVo loginVo = (LoginVo) session.getAttribute("loginVo1");
+        mainEntity.setUserId(loginVo.getIndex());
         this.mainService.insertMain(mainEntity);
         modelAndView.setViewName("redirect:/main/postmain");
         return modelAndView;
@@ -67,4 +64,15 @@ public class MainController {
         modelAndView.setViewName("/user/mypage");
         return modelAndView;
     }
+
+    @GetMapping(value = "/textclick")
+    public ModelAndView getTextclick(ModelAndView modelAndView,
+                                     int index){
+        MainEntity mainEntity = this.mainService.selectclick(index);
+        modelAndView.addObject("mainEntity", mainEntity);
+        modelAndView.setViewName("/user/textclick");
+        return modelAndView;
+    }
+
+
 }

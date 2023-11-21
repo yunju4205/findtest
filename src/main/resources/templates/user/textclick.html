@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/user/resources/stylesheets/textclick.css">
+</head>
+<body>
+<div class="main">
+  <div class="mainmainmain">게시글</div>
+  <form method="post">
+    <div class="textmain">
+      <div class="titlemain">
+        <div class="title">
+          <div>제목</div>
+        </div>
+        <div class="texttitle">
+          <div>내용</div>
+        </div>
+      </div>
+      <div class="mainmain">
+        <div>
+          <div class="titletext" th:text="${mainEntity.getTitle()}"></div>
+        </div>
+        <div class="texttext" th:text="${mainEntity.getContents()}"></div>
+      </div>
+    </div>
+    <div class="btumain">
+      <a th:href="@{/main/postmain}" class="listGo">목록으로</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

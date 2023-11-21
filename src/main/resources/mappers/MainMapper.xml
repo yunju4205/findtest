@@ -4,19 +4,36 @@
 <mapper namespace="com.example.findtest.mappers.IMainMapper">
 
     <select id="selectMain"
-            resultType="com.example.findtest.entities.MainEntity">
-        SELECT `index`    AS `index`,
-               `title`    AS `title`,
-               `textname` AS `textname`,
-               `hits`     AS `hits`
-        FROM `table`.`post`
-        WHERE `user_id` = #{index}
+            resultType="com.example.findtest.dtos.MainDto">
+        SELECT `post`.`index`    AS `index`,
+               `post`.`title`    AS `title`,
+               `post`.`contents` AS `contents`,
+               `post`.`textdate` AS `textDate`,
+               `post`.`hits`     AS `hits`,
+               `join`.`name`     AS `name`
+        FROM `table`.`post` AS `post`
+                 LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
     </select>
 
     <insert id="insertMain"
             parameterType="com.example.findtest.entities.MainEntity">
-        INSERT INTO `table`.`post`(`title`, `textname`, `hits` , `user_id`)
-        VALUES (#{title}, #{textname}, #{hits} , #{userId})
+        INSERT INTO `table`.`post`(`title`, `textname`, `contents`, `hits`, `user_id`)
+        VALUES (#{title}, #{textname}, #{contents}, #{hits}, #{userId})
     </insert>
+
+    <select id="selectclick"
+            parameterType="com.example.findtest.entities.MainEntity">
+        SELECT `title`    AS `title`,
+               `contents` AS `contents`,
+               `hits` AS `hits`
+        FROM `table`.`post`
+        WHERE `index` = #{index}
+    </select>
+
+    <update id="updatehits">
+        UPDATE `table`.`post`
+        SET `hits` = #{hits}
+        WHERE `index` = #{index}
+    </update>
 
 </mapper>

@@ -1,14 +1,15 @@
 package com.example.findtest.entities;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 
 public class MainEntity {
     private int index;
     private String title;
-    private String textname;
-    private Data textdate;
+    private String textName;
+    private String contents;
+    private Date textDate;
     private int hits;
-
     private int userId;
 
 
@@ -17,21 +18,12 @@ public class MainEntity {
 
     }
 
-    public MainEntity(int index, String title, String textname, Data textdate, int hits, int userId) {
-        this.index = index;
-        this.title = title;
-        this.textname = textname;
-        this.textdate = textdate;
-        this.hits = hits;
-        this.userId = userId;
+    public Date getTextDate() {
+        return textDate;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setTextDate(Date textDate) {
+        this.textDate = textDate;
     }
 
     public int getIndex() {
@@ -50,21 +42,22 @@ public class MainEntity {
         this.title = title;
     }
 
-    public String getTextname() {
-        return textname;
+    public String getTextName() {
+        return textName;
     }
 
-    public void setTextname(String textname) {
-        this.textname = textname;
+    public void setTextName(String textName) {
+        this.textName = textName;
     }
 
-    public Data getTextdate() {
-        return textdate;
+    public String getContents() {
+        return contents;
     }
 
-    public void setTextdate(Data textdate) {
-        this.textdate = textdate;
+    public void setContents(String contents) {
+        this.contents = contents;
     }
+
 
     public int getHits() {
         return hits;
@@ -72,5 +65,13 @@ public class MainEntity {
 
     public void setHits(int hits) {
         this.hits = hits;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
