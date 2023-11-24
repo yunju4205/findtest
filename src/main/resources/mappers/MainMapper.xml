@@ -15,17 +15,31 @@
                  LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
     </select>
 
+    <select id="selectmypage"
+            resultType="com.example.findtest.dtos.MainDto">
+        SELECT `post`.`index`    AS `index`,
+               `post`.`title`    AS `title`,
+               `post`.`contents` AS `contents`,
+               `post`.`textdate` AS `textDate`,
+               `post`.`hits`     AS `hits`,
+               `post`.`user_id`  AS `userId`,
+               `join`.`name`     AS `name`
+        FROM `table`.`post` AS `post`
+                 LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
+        WHERE `post`.`user_id` = #{index}
+    </select>
+
     <insert id="insertMain"
             parameterType="com.example.findtest.entities.MainEntity">
         INSERT INTO `table`.`post`(`title`, `textname`, `contents`, `hits`, `user_id`)
-        VALUES (#{title}, #{textname}, #{contents}, #{hits}, #{userId})
+        VALUES (#{title}, #{textName}, #{contents}, #{hits}, #{userId})
     </insert>
 
     <select id="selectclick"
             parameterType="com.example.findtest.entities.MainEntity">
         SELECT `title`    AS `title`,
                `contents` AS `contents`,
-               `hits` AS `hits`
+               `hits`     AS `hits`
         FROM `table`.`post`
         WHERE `index` = #{index}
     </select>
@@ -33,6 +47,20 @@
     <update id="updatehits">
         UPDATE `table`.`post`
         SET `hits` = #{hits}
+        WHERE `index` = #{index}
+    </update>
+
+    <delete id="deleteMain">
+        DELETE
+        FROM `table`.`post`
+        WHERE `index` = #{index}
+    </delete>
+
+    <update id="updateMain"
+            parameterType="com.example.findtest.entities.MainEntity">
+        UPDATE `table`.`post`
+        SET `title`    = #{title},
+            `contents` = #{contents}
         WHERE `index` = #{index}
     </update>
 

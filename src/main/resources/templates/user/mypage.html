@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="/user/resources/stylesheets/mypage.css"/>
-  <script src="https://kit.fontawesome.com/7f0b80e413.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/user/resources/stylesheets/mypage.css"/>
+    <script src="https://kit.fontawesome.com/7f0b80e413.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="main">
-  <div class="mainimg">
-    <div class="img">
-      <i class="fa-regular fa-pen-to-square"></i>
+    <div class="mainimg">
+        <div class="img">
+            <i class="fa-regular fa-pen-to-square"></i>
+        </div>
+        <div class="maintext">마이페이지</div>
     </div>
-    <div class="maintext">마이페이지</div>
-  </div>
-  <form>
-    <select class="full" id="long">
-      <option>번호</option>
-      <option>제목</option>
-      <option>작성자</option>
-      <option>작성일</option>
-    </select>
-    <input class="find" type="text" name="find" placeholder="검색해주세요">
-    <input class="findbtu" type="submit" value="검색">
-  </form>
-  <table>
-    <thead>
-    <tr class="head">
-      <th>번호</th>
-      <th>제목</th>
-      <th>작성자</th>
-      <th>작성일</th>
-      <th>조회수</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each = "mainEntity : ${mainEntities}" class="tbody">
-      <td th:text = "${mainEntity.getIndex()}"></td>
-      <td th:text = "${mainEntity.getTitle()}"></td>
-      <td th:text = "${mainEntity.getTextname()}"></td>
-      <td th:text = "${mainEntity.getTextdate()}"></td>
-      <td th:text = "${mainEntity.getTextdate()}"></td>
-    </tr>
-    </tbody>
-  </table>
+    <form>
+        <select class="full" id="long">
+            <option>번호</option>
+            <option>제목</option>
+            <option>작성자</option>
+            <option>작성일</option>
+        </select>
+        <input class="find" type="text" name="find" placeholder="검색해주세요">
+        <input class="findbtu" type="submit" value="검색">
+    </form>
+    <table>
+        <thead>
+        <tr class="head">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:onclick="'location.href=\''+ @{/main/logtext(index=${mainDto.getIndex()})} + '\''"
+            th:each="mainDto : ${mainDtos}" class="tbody">
+            <td th:text="${mainDto.getIndex()}"></td>
+            <td th:text="${mainDto.getTitle()}"></td>
+            <td th:text="${mainDto.getName()}"></td>
+            <td th:text="${#dates.format(mainDto.getTextDate(),'YYYY-MM-dd')}"></td>
+            <td th:text="${mainDto.getHits()}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

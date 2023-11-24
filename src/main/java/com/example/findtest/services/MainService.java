@@ -16,6 +16,9 @@ public class MainService {
     public MainService(IMainMapper iMainMapper) {
         this.iMainMapper = iMainMapper;
     }
+    public MainDto[] showTable(int index){
+        return iMainMapper.selectmypage(index);
+    }
 
     public MainDto[] showTable(){
         return iMainMapper.selectMain();
@@ -30,4 +33,10 @@ public class MainService {
         this.iMainMapper.updatehits(mainEntity.getHits()+1, index);
         return mainEntity;
     }
+
+    public void updateMain(MainEntity mainEntity){
+        this.iMainMapper.updateMain(mainEntity);
+    }
+
+    public void deleteMain(int index){this.iMainMapper.deleteMain(index);}
 }

@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 public interface IMainMapper {
 
     MainDto[] selectMain();
+    MainDto[] selectmypage(@Param(value = "index")int index);
 
     int insertMain(MainEntity mainEntity);
 
@@ -18,4 +19,8 @@ public interface IMainMapper {
 
     int updatehits(@Param(value = "hits") int hits,
                    @Param(value = "index") int index);
+
+    int updateMain(MainEntity mainEntity);
+
+    int deleteMain(@Param(value = "index")int index);
 }

@@ -53,17 +53,20 @@ public class MainController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/logtext")
-    public ModelAndView getLogtext(ModelAndView modelAndView){
-        modelAndView.setViewName("/user/logtext");
-        return modelAndView;
-    }
+
 
     @GetMapping(value = "/mypage")
-    public ModelAndView getMypage(ModelAndView modelAndView){
+    public ModelAndView getMypage(ModelAndView modelAndView,
+                                  HttpServletRequest request,
+                                  HttpSession session){
+        session = request.getSession();
+        LoginVo loginVo = (LoginVo) session.getAttribute("loginVo1");
+        MainDto[] mainDtos = this.mainService.showTable(loginVo.getIndex());
+        modelAndView.addObject("mainDtos", mainDtos);
         modelAndView.setViewName("/user/mypage");
         return modelAndView;
     }
+
 
     @GetMapping(value = "/textclick")
     public ModelAndView getTextclick(ModelAndView modelAndView,
@@ -74,5 +77,29 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/logtext")
+    public ModelAndView getLogtext(ModelAndView modelAndView,
+                                   int index){
+        MainEntity mainEntity = this.mainService.selectclick(index);
+        modelAndView.addObject("mainEntity", mainEntity);
+        modelAndView.setViewName("/user/logtext");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/logtext")
+    public ModelAndView postLogtext(ModelAndView modelAndView,
+                                    MainEntity mainEntity){
+        this.mainService.updateMain(mainEntity);
+        modelAndView.setViewName("redirect:/main/postmain");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/delete")
+    public ModelAndView getDelete(ModelAndView modelAndView,
+                                  int index){
+        this.mainService.deleteMain(index);
+        modelAndView.setViewName("redirect:/main/postmain");
+        return modelAndView;
+    }
 
 }
