@@ -23,4 +23,8 @@ public interface IMainMapper {
     int updateMain(MainEntity mainEntity);
 
     int deleteMain(@Param(value = "index")int index);
+
+    MainDto[] selectfind(@Param(value = "findSelect")String findSelect,
+                         @Param(value = "find") String find);
+
 }

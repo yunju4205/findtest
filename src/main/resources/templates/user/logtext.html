@@ -9,6 +9,7 @@
 <div class="main">
   <div class="mainmainmain">게시글 등록</div>
   <form method="post">
+    <input hidden="hidden" type="text" name="index" th:value="${mainEntity.getIndex()}">
     <div class="textmain">
       <div class="titlemain">
         <div class="title">
@@ -25,12 +26,12 @@
         <input type="text" class="texttext" name="contents" th:value="${mainEntity.getContents()}">
       </div>
     </div>
-    <div class="btumain">
-      <a th:href="@{/main/logtext(index=${mainEntity.getIndex()})}" class="modify">수정</a>
-      <a th:href="@{/main/delete(index=${mainEntity.getIndex()})}" class="delete">삭제</a>
-      <input class="again" type="reset" value="다시입력">
-      <a th:href="@{/user/postmain}" class="listGo">목록으로</a>
-    </div>
+      <div class="btumain">
+        <input type="submit" value="수정" th:href="@{/main/logtext(index=${mainEntity.getIndex()})}" class="modify">
+        <a th:href="@{/main/delete(index=${mainEntity.getIndex()})}" class="delete">삭제</a>
+        <input class="again" type="reset" value="다시입력">
+        <a th:href="@{/main/postmain}" class="listGo">목록으로</a>
+      </div>
   </form>
 </div>
 

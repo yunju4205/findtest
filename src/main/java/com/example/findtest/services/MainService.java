@@ -24,6 +24,10 @@ public class MainService {
         return iMainMapper.selectMain();
     }
 
+    public MainDto[] showTable(String findSelect, String find){
+        return iMainMapper.selectfind(findSelect, find);
+    }
+
     public void insertMain(MainEntity mainEntity){
         this.iMainMapper.insertMain(mainEntity);
     }
@@ -31,6 +35,11 @@ public class MainService {
     public MainEntity selectclick(int index) {
         MainEntity mainEntity = this.iMainMapper.selectclick(index);
         this.iMainMapper.updatehits(mainEntity.getHits()+1, index);
+        return mainEntity;
+    }
+
+    public MainEntity updateclick(int index){
+        MainEntity mainEntity = this.iMainMapper.selectclick(index);
         return mainEntity;
     }
 

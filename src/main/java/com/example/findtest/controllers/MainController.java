@@ -80,7 +80,7 @@ public class MainController {
     @GetMapping(value = "/logtext")
     public ModelAndView getLogtext(ModelAndView modelAndView,
                                    int index){
-        MainEntity mainEntity = this.mainService.selectclick(index);
+        MainEntity mainEntity = this.mainService.updateclick(index);
         modelAndView.addObject("mainEntity", mainEntity);
         modelAndView.setViewName("/user/logtext");
         return modelAndView;
@@ -90,7 +90,7 @@ public class MainController {
     public ModelAndView postLogtext(ModelAndView modelAndView,
                                     MainEntity mainEntity){
         this.mainService.updateMain(mainEntity);
-        modelAndView.setViewName("redirect:/main/postmain");
+        modelAndView.setViewName("redirect:/main/mypage");
         return modelAndView;
     }
 
@@ -98,7 +98,18 @@ public class MainController {
     public ModelAndView getDelete(ModelAndView modelAndView,
                                   int index){
         this.mainService.deleteMain(index);
-        modelAndView.setViewName("redirect:/main/postmain");
+        modelAndView.setViewName("redirect:/main/mypage");
+        System.out.println(index);
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/find")
+    public ModelAndView getFind(ModelAndView modelAndView,
+                                String findSelect,
+                                String find){
+        MainDto[] mainDtos = this.mainService.showTable(findSelect, find);
+        modelAndView.addObject("mainDtos", mainDtos);
+        modelAndView.setViewName("/main/postmain");
         return modelAndView;
     }
 

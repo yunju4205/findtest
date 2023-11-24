@@ -29,6 +29,26 @@
         WHERE `post`.`user_id` = #{index}
     </select>
 
+    <select id="selectfind"
+            resultType="com.example.findtest.dtos.MainDto">
+        SELECT `post`.`index` AS `index`,
+        `post`.`title` AS `title`,
+        `post`.`contents` AS `contents`,
+        `post`.`textdate` AS `textDate`,
+        `post`.`hits` AS `hits`,
+        `post`.`user_id` AS `userId`,
+        `join`.`name` AS `name`
+        FROM `table`.`post` AS `post`
+        LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
+        WHERE
+        <if test='findSelect.equals("title")'>
+            REPLACE(`post`.`title`,'',' ') LIKE CONCAT('%',#{find},'%')
+        </if>
+        <if test='findSelect.equals("textName")'>
+            REPLACE(`join`.`name`,'',' ') LIKE CONCAT('%',#{find},'%')
+        </if>
+    </select>
+
     <insert id="insertMain"
             parameterType="com.example.findtest.entities.MainEntity">
         INSERT INTO `table`.`post`(`title`, `textname`, `contents`, `hits`, `user_id`)
@@ -37,7 +57,8 @@
 
     <select id="selectclick"
             parameterType="com.example.findtest.entities.MainEntity">
-        SELECT `title`    AS `title`,
+        SELECT `index`    AS `index`,
+               `title`    AS `title`,
                `contents` AS `contents`,
                `hits`     AS `hits`
         FROM `table`.`post`
@@ -63,5 +84,6 @@
             `contents` = #{contents}
         WHERE `index` = #{index}
     </update>
+
 
 </mapper>
