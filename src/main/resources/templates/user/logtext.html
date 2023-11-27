@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="mainmain">
-        <div>
+        <div class="maintitle">
           <input type="text" name="title" class="titletext" th:value="${mainEntity.getTitle()}">
         </div>
         <input type="text" class="texttext" name="contents" th:value="${mainEntity.getContents()}">
@@ -28,9 +28,13 @@
     </div>
       <div class="btumain">
         <input type="submit" value="수정" th:href="@{/main/logtext(index=${mainEntity.getIndex()})}" class="modify">
-        <a th:href="@{/main/delete(index=${mainEntity.getIndex()})}" class="delete">삭제</a>
+        <a th:href="@{/main/delete(index=${mainEntity.getIndex()})}" class="delete">
+          <div class="textdelete">삭제</div>
+        </a>
         <input class="again" type="reset" value="다시입력">
-        <a th:href="@{/main/postmain}" class="listGo">목록으로</a>
+        <a th:href="@{/main/postmain}" class="listGo">
+          <div class="textlist">목록으로</div>
+        </a>
       </div>
   </form>
 </div>

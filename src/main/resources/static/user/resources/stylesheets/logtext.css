@@ -62,20 +62,21 @@ form{
 }
 
 .titletext{
-    height: 2rem;
-    width: 30rem;
-    padding-left: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.8rem;
+    font-size: 0.8rem;
 }
+
+.maintitle {
+    width: 30rem;
+    height: 3rem;
+    border-bottom: 0.0625rem solid #E9967AFF;
+}
+
 .title > div{
     margin-top: 0.5rem;
 }
-.mainmain > div{
-    width: 30rem;
-    height: 3.5rem;
-    border-bottom: 0.0625rem solid #ff8989;
-    align-items: center;
-    display: flex;
-}
+
 .titlemain{
     width: 30rem;
     height: 20rem;
@@ -107,13 +108,13 @@ form{
     font-weight: bold;
 }
 
-.texttitle > div {
-    margin-top: 0.5rem;
-}
 .texttext{
-    width: 28.9rem;
-    height: 20rem;
-    padding-left: 1rem;
+    width: 27rem;
+    height: 15rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+    background-color: red;
 }
 .btumain{
     width: 40rem;
@@ -167,9 +168,6 @@ form{
     background-color: darksalmon;
     color: white;
 }
-.modify:hover{
-    border:0.0625rem solid black;
-}
 
 .delete{
     width: 4.3rem;
@@ -180,6 +178,18 @@ form{
     color: white;
 }
 
-.delete:hover{
-    border: 0.0625rem solid black;
+.textdelete{
+    width: 2.5rem;
+    height: 1.5rem;
+    margin-left: 1.3rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.textlist{
+    width: 4rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
 }
