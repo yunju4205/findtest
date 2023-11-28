@@ -44,7 +44,7 @@
         </thead>
         <tbody>
         <tr th:onclick="'location.href=\''+ @{/main/textclick(index=${mainDto.getIndex()})} + '\''"
-            th:each="mainDto : ${mainDtos}" class="tbody">
+            th:each="mainDto : ${userTableVo.getMainEntities()}" class="tbody">
             <td th:text="${mainDto.getIndex()}"></td>
             <td th:text="${mainDto.getTitle()}"></td>
             <td th:text="${mainDto.getName()}"></td>
@@ -53,6 +53,58 @@
         </tr>
         </tbody>
     </table>
+    <div class="total" th:if="${id.equals('find2')}">
+        <a th:if="${userTableVo.getMinPage() < userTableVo.getRequestPage()}"
+           th:href="@{'/main/postmain/' + ${userTableVo.getMinPage()}}">&lt;&lt;</a>
+
+        <a th:if="${userTableVo.getMinPage() < userTableVo.getRequestPage()}"
+           th:href="@{'/main/postmain/' + ${userTableVo.getRequestPage() - 1}}">&lt;</a>
+
+        <a th:each="page: ${#numbers.sequence(userTableVo.getStartPage(), userTableVo.getRequestPage()-1)}"
+           th:href="@{'/main/postmain/' + ${page}}"
+           th:text="${page}"
+           th:if="${userTableVo.getRequestPage() > userTableVo.getMinPage()}"></a>
+
+        <a th:text="${userTableVo.getRequestPage()}"></a>
+
+        <a th:each="page: ${#numbers.sequence(userTableVo.getRequestPage() + 1, userTableVo.getEndPage())}"
+           th:href="@{'/main/postmain/' + ${page}}"
+           th:text="${page}"
+           th:if="${userTableVo.getRequestPage() < userTableVo.getMaxPage()}"></a>
+
+        <a th:if="${userTableVo.getMaxPage() > userTableVo.getRequestPage()}"
+           th:href="@{'/main/postmain/' + ${userTableVo.getRequestPage() + 1}}">&gt;</a>
+
+        <a th:if="${userTableVo.getMaxPage() > userTableVo.getRequestPage()}"
+           th:href="@{'/main/postmain/' + ${userTableVo.getMaxPage()}}">&gt;&gt;</a>
+    </div>
+
+    <div class="total" th:if="${id.equals('find')}">
+        <a th:if="${userTableVo.getMinPage() < userTableVo.getRequestPage()}"
+           th:href="@{'/main/find/' + ${userTableVo.getMinPage()}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}">&lt;&lt;</a>
+
+        <a th:if="${userTableVo.getMinPage() < userTableVo.getRequestPage()}"
+           th:href="@{'/main/find/' + ${userTableVo.getRequestPage() - 1}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}">&lt;</a>
+
+        <a th:each="page: ${#numbers.sequence(userTableVo.getStartPage(), userTableVo.getRequestPage()-1)}"
+           th:href="@{'/main/find/' + ${page}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}"
+           th:text="${page}"
+           th:if="${userTableVo.getRequestPage() > userTableVo.getMinPage()}"></a>
+
+        <a th:text="${userTableVo.getRequestPage()}"></a>
+
+        <a th:each="page: ${#numbers.sequence(userTableVo.getRequestPage() + 1, userTableVo.getEndPage())}"
+           th:href="@{'/main/find/' + ${page}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}"
+           th:text="${page}"
+           th:if="${userTableVo.getRequestPage() < userTableVo.getMaxPage()}"></a>
+
+        <a th:if="${userTableVo.getMaxPage() > userTableVo.getRequestPage()}"
+           th:href="@{'/main/find/' + ${userTableVo.getRequestPage() + 1}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}">&gt;</a>
+
+        <a th:if="${userTableVo.getMaxPage() > userTableVo.getRequestPage()}"
+           th:href="@{'/main/find/' + ${userTableVo.getMaxPage()}(findSelect= ${userTableVo.getFindSelect()},find=${userTableVo.getFind()})}">&gt;&gt;</a>
+    </div>
 </div>
+
 </body>
 </html>

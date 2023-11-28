@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/user/resources/stylesheets/findId.css"/>
+  <script src="https://kit.fontawesome.com/7f0b80e413.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="main">
+  <div class="mainmain">
+    <div class="mainimg">
+      <i class="fa-regular fa-pen-to-square"></i>
+    </div>
+    <div class="maintext">아이디 찾기</div>
+  </div>
+  <form th:action="@{/user/findidmain}" class="logmainmain">
+    <div class="logmain">
+      <div class="login">
+        <div class="idimg">
+          <i class="fa-regular fa-user"></i>
+        </div>
+        <input id="name" name="name" type="text" placeholder="이름" class="id">
+      </div>
+      <div class="passwordmain">
+        <div class="passimg">
+          <i class="fa-solid fa-mobile-screen"></i>
+        </div>
+        <input name="phoneNumber" type="text" placeholder="전화번호" class="password">
+      </div>
+      <input  class="logbtu" type="submit" value="아이디 찾기">
+    </div>
+  </form>
+  <div class="joinmain">
+    <a th:href="@{/user/login}" class="findpassword">로그인</a>
+    <a th:href="@{/user/findpassword}" class="idfind">비밀번호 찾기</a>
+    <a th:href="@{/user/join}" class="join">회원가입</a>
+  </div>
+</div>
+<script>
+
+</script>
+</body>
+</html>

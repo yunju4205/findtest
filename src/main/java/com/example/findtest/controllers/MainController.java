@@ -5,6 +5,7 @@ import com.example.findtest.dtos.MainDto;
 import com.example.findtest.entities.MainEntity;
 import com.example.findtest.services.MainService;
 import com.example.findtest.vos.LoginVo;
+import com.example.findtest.vos.UserTableVo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.juli.logging.Log;
@@ -12,6 +13,7 @@ import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,13 +29,7 @@ public class MainController {
         this.mainService = mainService;
     }
 
-    @GetMapping(value = "postmain")
-    public ModelAndView getPostmain(ModelAndView modelAndView){
-        MainDto[] mainDtos = this.mainService.showTable();
-        modelAndView.addObject("mainDtos", mainDtos);
-        modelAndView.setViewName("/main/postmain");
-        return modelAndView;
-    }
+
 
     @GetMapping(value = "/textadd")
     public ModelAndView getTextadd(ModelAndView modelAndView){
@@ -103,14 +99,41 @@ public class MainController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/find")
+    @GetMapping(value = "/find/{page}")
     public ModelAndView getFind(ModelAndView modelAndView,
                                 String findSelect,
-                                String find){
-        MainDto[] mainDtos = this.mainService.showTable(findSelect, find);
-        modelAndView.addObject("mainDtos", mainDtos);
+                                String find,
+                                @PathVariable(name = "page")int page){
+       UserTableVo userTableVo = this.mainService.showTable(findSelect, find ,page);
+       userTableVo.setFindSelect(findSelect);
+       userTableVo.setFind(find);
+        modelAndView.addObject("userTableVo", userTableVo);
+        modelAndView.addObject("id","find");
         modelAndView.setViewName("/main/postmain");
         return modelAndView;
     }
 
+
+    @GetMapping(value = "postmain/{page}")
+    public ModelAndView getPage(@PathVariable(name = "page")int page,
+                                ModelAndView modelAndView) {
+        UserTableVo userTableVo = this.mainService.getUser(page);
+        System.out.println(userTableVo.getMaxPage());
+        modelAndView.addObject("userTableVo",userTableVo);
+        modelAndView.addObject("id","find2");
+        modelAndView.setViewName("/main/postmain");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "postmain")
+    public ModelAndView getPostmain(ModelAndView modelAndView){
+        return getPage(1, modelAndView);
+    }
+
+    @GetMapping(value = "find")
+    public ModelAndView getFind(ModelAndView modelAndView,
+                                String findSelect,
+                                String find){
+        return getFind(modelAndView, findSelect , find , 1);
+    }
 }

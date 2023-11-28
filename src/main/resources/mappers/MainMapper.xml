@@ -47,6 +47,8 @@
         <if test='findSelect.equals("textName")'>
             REPLACE(`join`.`name`,'',' ') LIKE CONCAT('%',#{find},'%')
         </if>
+        ORDER BY `index` DESC
+        LIMIT #{limit} OFFSET #{offset}
     </select>
 
     <insert id="insertMain"
@@ -84,6 +86,37 @@
             `contents` = #{contents}
         WHERE `index` = #{index}
     </update>
+    
+    <select id="selectUserTable"
+            resultType="com.example.findtest.dtos.MainDto">
+        SELECT `post`.`index`    AS `index`,
+               `post`.`title`    AS `title`,
+               `post`.`contents` AS `contents`,
+               `post`.`textdate` AS `textDate`,
+               `post`.`hits`     AS `hits`,
+               `join`.`name`     AS `name`
+        FROM `table`.`post` AS `post`
+                 LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
+        ORDER BY `index` DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
 
+    <select id="totalCount">
+        SELECT COUNT(1)
+        FROM `table`.`post`
+    </select>
+
+    <select id="findCount">
+        SELECT COUNT(1)
+        FROM `table`.`post`
+        LEFT JOIN `table`.`join` AS `join` ON `post`.`user_id` = `join`.`index`
+        WHERE
+        <if test='findSelect.equals("title")'>
+            REPLACE(`post`.`title`,'',' ') LIKE CONCAT('%',#{find},'%')
+        </if>
+        <if test='findSelect.equals("textName")'>
+            REPLACE(`join`.`name`,'',' ') LIKE CONCAT('%',#{find},'%')
+        </if>
+    </select>
 
 </mapper>

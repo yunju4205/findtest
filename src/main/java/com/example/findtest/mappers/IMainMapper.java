@@ -25,6 +25,15 @@ public interface IMainMapper {
     int deleteMain(@Param(value = "index")int index);
 
     MainDto[] selectfind(@Param(value = "findSelect")String findSelect,
-                         @Param(value = "find") String find);
+                         @Param(value = "find") String find,
+                         @Param(value = "limit") int limit,
+                         @Param(value = "offset") int offset);
+
+    MainDto[] selectUserTable(@Param(value = "limit") int limit,
+                                 @Param(value = "offset") int offset);
+    int totalCount();
+
+    int findCount(@Param(value = "findSelect")String findSelect,
+                  @Param(value = "find") String find);
 
 }
