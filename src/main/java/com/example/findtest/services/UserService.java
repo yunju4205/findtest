@@ -1,5 +1,6 @@
 package com.example.findtest.services;
 
+import com.example.findtest.dtos.MainDto;
 import com.example.findtest.entities.UserEntity;
 import com.example.findtest.mappers.IUserMapper;
 import com.example.findtest.vos.LoginVo;
@@ -35,4 +36,15 @@ public class UserService {
         loginVo.setResult("성공");
         return loginVo;
     }
+
+    public UserEntity selectFindId(String name, String phoneNumber){
+        UserEntity userEntity = this.iUserMapper.selectFindId(name, phoneNumber);
+        return userEntity;
+    }
+
+    public UserEntity selectFindPassword(String email, String phoneNumber){
+        UserEntity userEntity = this.iUserMapper.selectFindPassword(email, phoneNumber);
+        return userEntity;
+    }
+
 }

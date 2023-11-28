@@ -5,6 +5,7 @@ import com.example.findtest.services.UserService;
 import com.example.findtest.vos.LoginVo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.catalina.User;
 import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,6 +71,38 @@ public class UserController {
         modelAndView.setViewName("redirect:/main/postmain");
         return modelAndView;
     }
+
+    @GetMapping(value = "/findid")
+    public ModelAndView getFindid (ModelAndView modelAndView){
+        modelAndView.setViewName("/user/findId");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/findpassword")
+    public ModelAndView getFindpassword(ModelAndView modelAndView){
+        modelAndView.setViewName("/user/findPassword");
+        return modelAndView;
+    }
+    @GetMapping(value = "/findidmain")
+    public ModelAndView getFindidmain(ModelAndView modelAndView,
+                                  String name,
+                                  String phoneNumber){
+        UserEntity userEntity = this.userService.selectFindId(name, phoneNumber);
+        modelAndView.addObject("userEntity", userEntity);
+        modelAndView.setViewName("/user/findidmain");
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/findpasswordmain")
+    public ModelAndView getFindpasswordmain(ModelAndView modelAndView,
+                                        String email,
+                                        String phoneNumber){
+        UserEntity userEntity = this.userService.selectFindPassword(email, phoneNumber);
+        modelAndView.addObject("userEntity", userEntity);
+        modelAndView.setViewName("/user/findpasswordmain");
+        return modelAndView;
+    }
+
 
 
 }

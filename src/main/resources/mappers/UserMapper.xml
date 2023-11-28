@@ -5,20 +5,44 @@
     <insert id="insertUser"
             parameterType="com.example.findtest.entities.UserEntity">
         INSERT INTO `table`.`join`(`email`, `password`, `birth`, `phone_number`, `name`)
-        VALUES (#{email}, #{password}, #{birth}, #{phoneNumber},#{name})
+        VALUES (#{email}, #{password}, #{birth}, #{phoneNumber}, #{name})
     </insert>
 
     <select id="selectUser"
             parameterType="com.example.findtest.entities.UserEntity"
             resultType="com.example.findtest.entities.UserEntity">
-        SELECT `index` AS `index`,
-               `email` AS `email`,
-               `password` AS `password`,
-               `birth` AS `birth`,
-               `name` AS `name`,
+        SELECT `index`        AS `index`,
+               `email`        AS `email`,
+               `password`     AS `password`,
+               `birth`        AS `birth`,
+               `name`         AS `name`,
                `phone_number` AS `phoneNumber`
         FROM `table`.`join`
         WHERE `email` = #{email}
           AND `password` = #{password}
+    </select>
+
+    <select id="selectFindId"
+            parameterType="com.example.findtest.entities.UserEntity"
+            resultType="com.example.findtest.entities.UserEntity">
+        SELECT `index`        AS `index`,
+               `name`         AS `name`,
+               `phone_number` AS `phoneNumber`,
+               `email`        AS `email`
+        FROM `table`.`join`
+        WHERE `name` = #{name}
+          AND `phone_number` = #{phoneNumber}
+    </select>
+
+    <select id="selectFindPassword"
+            parameterType="com.example.findtest.entities.UserEntity"
+            resultType="com.example.findtest.entities.UserEntity">
+        SELECT `index`        AS `index`,
+               `email`        AS `email`,
+               `password`     AS `password`,
+               `phone_number` AS `phoneNumber`
+        FROM `table`.`join`
+        WHERE `email` = #{email}
+          AND `phone_number` = #{phoneNumber}
     </select>
 </mapper>
