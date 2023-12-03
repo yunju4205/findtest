@@ -154,6 +154,15 @@ form{
     background-color: darksalmon;
     color: white;
 }
+
+.textlist{
+    width: 4rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
 .listGo:hover{
     border: 0.0625rem solid black;
 }
