@@ -10,6 +10,10 @@ input{
     background-color: unset;
 }
 
+textarea{
+    border: none;
+}
+
 a {
     text-decoration-line: none;
 }
@@ -113,7 +117,6 @@ form{
 .texttext{
     width: 28.9rem;
     height: 20rem;
-    padding-left: 1rem;
 }
 .btumain{
     width: 40rem;
